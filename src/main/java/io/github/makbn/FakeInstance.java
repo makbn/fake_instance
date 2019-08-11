@@ -52,21 +52,13 @@ public class FakeInstance {
         return instance;
     }
 
-    private Object getRandomValueForField(Field field, int depth) throws Exception {
+    private Object getRandomValueForField(Field field, int depth) {
         Class<?> type = field.getType();
         return getRandomValueForField(field, type, depth);
     }
 
-    private Object getRandomValueForField(Field field, Class<?> type, int depth) throws Exception {
+    private Object getRandomValueForField(Field field, Class<?> type, int depth) {
 
-        System.out.println("field: " + (field != null ? field.getName() : "null field"));
-        System.out.println("type: " + (type != null ? type.getName() : "null type"));
-        // Note that we must handle the different types here! This is just an
-        // example, so this list is not complete! Adapt this to your needs!
-        /*if (type.isEnum()) {
-            Object[] enumValues = type.getEnumConstants();
-            return enumValues[random.nextInt(enumValues.length)];
-        } else */
         if (type.equals(Integer.TYPE) || type.equals(Integer.class)
                 || type.equals(Long.TYPE) || type.equals(Long.class)
                 || type.equals(Double.TYPE) || type.equals(Double.class)
@@ -246,13 +238,33 @@ public class FakeInstance {
             this.name = name;
         }
 
+        @Override
+        public String toString() {
+            return "Person{\n" +
+                    "username='" + username + '\'' + "\n" +
+                    ", email='" + email + '\'' + "\n" +
+                    ", name='" + name + '\'' + "\n" +
+                    ", phone='" + phone + '\'' + "\n" +
+                    ", password='" + password + '\'' + "\n" +
+                    ", num=" + num + "\n" +
+                    ", num3=" + num3 + "\n" +
+                    ", address='" + address + '\'' + "\n" +
+                    ", text='" + text + '\'' + "\n" +
+                    ", city='" + city + '\'' + "\n" +
+                    ", country='" + country + '\'' + "\n" +
+                    '}';
+        }
     }
 
 
     public static void main(String[] args) {
         Person p = FakeInstance.get().createAndFill(Person.class, 1);
 
-        System.out.println(p.name);
+        System.out.println(p);
+
+        p = FakeInstance.get().createAndFill(Person.class, 1);
+
+        System.out.println(p);
     }
 
 }
