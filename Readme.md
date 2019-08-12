@@ -1,7 +1,7 @@
 ## Fake Instance Generator
 
-I just start to implement a webservice for my new own project and i need to create business layer
-for the front-end team to develop clients in parallel! fastest way is to generate fake data!
+I just start to implement a webservice for my new own project and i need to create a business layer
+for the front-end team to develop clients in parallel! the fastest way is to generate fake data!
 
 ## How to use
 
